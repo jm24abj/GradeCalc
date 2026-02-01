@@ -10,15 +10,13 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import javafx.scene.input.KeyCode;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
     
 
     private static Scene scene;
     private static VBox moduleHolder;
     private static boolean addingModule = false;
+    
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -39,7 +37,7 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
-    static void createModuleNameField() {
+    static void createModuleNameField() throws IOException{
         if (addingModule) {
             return;
         }
@@ -59,13 +57,17 @@ public class App extends Application {
             KeyCode keyCode = event.getCode();
                 
             if (keyCode.equals(KeyCode.ENTER)) {
-                createModule(newModuleName.getText());
+                try {
+                    createModule(newModuleName.getText());
+                } catch(Exception e) {
+                    
+                }
                 moduleHolder.getChildren().remove(newModuleName);
             }
         });
     }
     
-    static void createModule(String moduleName) {
+    static void createModule(String moduleName) throws IOException {
         if (!addingModule) {
             return;
         }
@@ -73,9 +75,11 @@ public class App extends Application {
         addingModule = false;
         
         System.out.println("new module: " + moduleName + " added!");
-        Button newModule = new Button();
-        newModule.setText(moduleName);
-        newModule.setMaxWidth(Double.MAX_VALUE);
+        
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("moduleUI.fxml"));
+        Button newModule = (Button) fxmlLoader.load();
+        ModuleUIController controller = fxmlLoader.getController();
+        controller.instantiateModule(newModule, moduleName);
         moduleHolder.getChildren().add(newModule);
     }
     

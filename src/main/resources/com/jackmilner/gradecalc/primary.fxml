@@ -23,7 +23,7 @@
                         <Label text="Java Programming" textAlignment="CENTER" />
                      </children>
                   </VBox>
-                  <Button fx:id="addModuleButton" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Add Module +" />
+                  <Button fx:id="addModuleButton" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#addModule" prefHeight="25.0" prefWidth="133.0" text="Add Module +" />
                </children>
             </VBox>
          </children></AnchorPane>

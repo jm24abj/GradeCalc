@@ -12,7 +12,9 @@ public class PrimaryController {
     }
     
     @FXML
-    private void resizeSidePanel() throws IOException {
+    private void addModule() throws IOException {
+        // occurs when #addModule button in the side panel is pressed
+        App.createModuleNameField();
         
     }
 }

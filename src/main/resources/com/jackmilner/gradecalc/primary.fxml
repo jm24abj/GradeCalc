@@ -17,12 +17,7 @@
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <VBox fx:id="moduleHolder" alignment="TOP_CENTER" spacing="3.0">
-                     <children>
-                        <Label fx:id="testLabel" alignment="CENTER" minWidth="-Infinity" text="Databases" textAlignment="CENTER" />
-                        <Label text="Java Programming" textAlignment="CENTER" />
-                     </children>
-                  </VBox>
+                  <VBox fx:id="moduleHolder" alignment="TOP_CENTER" spacing="3.0" />
                   <Button fx:id="addModuleButton" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#addModule" prefHeight="25.0" prefWidth="133.0" text="Add Module +" />
                </children>
             </VBox>

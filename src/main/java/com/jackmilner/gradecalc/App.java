@@ -40,9 +40,6 @@ public class App extends Application {
     }
 
     static void createModuleNameField() {
-        
-        System.out.println("in");
-        
         if (addingModule) {
             return;
         }
@@ -63,6 +60,7 @@ public class App extends Application {
                 
             if (keyCode.equals(KeyCode.ENTER)) {
                 createModule(newModuleName.getText());
+                moduleHolder.getChildren().remove(newModuleName);
             }
         });
     }
@@ -75,6 +73,10 @@ public class App extends Application {
         addingModule = false;
         
         System.out.println("new module: " + moduleName + " added!");
+        Button newModule = new Button();
+        newModule.setText(moduleName);
+        newModule.setMaxWidth(Double.MAX_VALUE);
+        moduleHolder.getChildren().add(newModule);
     }
     
     private static Parent loadFXML(String fxml) throws IOException {

@@ -27,11 +27,12 @@ public class ModuleUIController implements Initializable {
         
         Module module = new Module();
         
-        module.addExam(new Exam("Hello",30,100,40));
-        module.addExam(new Exam("In class test 1",50,100,20));
-        module.addExam(new Exam("In class test 2",79,100,20));
-        
-        module.displayExams();
+        module.addExam(new Exam("In class test 1",72,100,20));
+        module.addExam(new Exam("In class test 2",89,100,30));
+        module.addExam(new Exam("In class test 3",75,100,50));
+       
+        String GPA = module.currentModuleGPA();
+        System.out.println(GPA);
         
         newButton.setOnAction(event -> {
             System.out.println(newButton.getText());

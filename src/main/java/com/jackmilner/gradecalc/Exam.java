@@ -29,6 +29,10 @@ public class Exam {
         return (yourMark / maxMark) * examWeight * 100; 
     }
     
+    public double getWeight() {
+        return examWeight*100;
+    }
+    
     public String getName() {
         return this.examName;
     }

@@ -25,6 +25,14 @@ public class ModuleUIController implements Initializable {
         newButton.setId(String.valueOf(moduleCount));
         newButton.setMaxWidth(Double.MAX_VALUE);
         
+        Module module = new Module();
+        
+        module.addExam(new Exam("Hello",30,100,40));
+        module.addExam(new Exam("In class test 1",50,100,20));
+        module.addExam(new Exam("In class test 2",79,100,20));
+        
+        module.displayExams();
+        
         newButton.setOnAction(event -> {
             System.out.println(newButton.getText());
             System.out.println("id: " + newButton.getId());

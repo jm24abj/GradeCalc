@@ -25,13 +25,13 @@ public class ModuleUIController implements Initializable {
         newButton.setId(String.valueOf(moduleCount));
         newButton.setMaxWidth(Double.MAX_VALUE);
         
-        Module module = new Module();
+        Module ben = new Module();
         
-        module.addExam(new Exam("In class test 1",72,100,20));
-        module.addExam(new Exam("In class test 2",89,100,30));
-        module.addExam(new Exam("In class test 3",75,100,50));
+        ben.addExam(new Exam("In class test 1",72,100,20));
+        ben.addExam(new Exam("In class test 2",89,100,30));
+        ben.addExam(new Exam("In class test 3",75,100,50));
        
-        String GPA = module.currentModuleGPA();
+        String GPA = ben.currentModuleGPA();
         System.out.println(GPA);
         
         newButton.setOnAction(event -> {

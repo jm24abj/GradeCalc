@@ -7,10 +7,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="CENTER" prefHeight="102.0" prefWidth="394.0" style="-fx-background-color: #1d3557;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" prefHeight="102.0" prefWidth="394.0" spacing="5.0" style="-fx-background-color: #1d3557;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label text="Enter a valid GPA (from 0.00-4.50)" textFill="#ff6767" />
       <Label fx:id="moduleName2" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Exam Name" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="14.0" />
@@ -20,22 +18,32 @@
          <children>
             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="moduleName1" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="17.0" prefWidth="147.0" text="Desired Grade" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="moduleName1" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="17.0" prefWidth="147.0" text="Your Mark" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <TextField promptText="Enter Grade: GPA" />
+                  <TextField promptText="Your Mark / NA" />
                </children>
             </VBox>
             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="moduleName11" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="17.0" prefWidth="147.0" text="Desired Grade" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="moduleName11" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="17.0" prefWidth="147.0" text="Max Marks" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <TextField promptText="Enter Grade: GPA" />
+                  <TextField promptText="Maximum Marks" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="50.0" layoutY="10.0">
+               <children>
+                  <Label fx:id="moduleName12" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="17.0" prefWidth="147.0" text="Exam Weighting" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField promptText="Exam Weight (0-100%)" />
                </children>
             </VBox>
          </children>

@@ -12,12 +12,12 @@ import javafx.scene.input.KeyCode;
 
 public class App extends Application {
     
-
     private static Scene scene;
     private static VBox moduleHolder;
+    private static VBox examHolder;
     private static boolean addingModule = false;
+    private static Button[] modules = new Button[30];
     
-
     @Override
     public void start(Stage stage) throws IOException {
         
@@ -30,6 +30,9 @@ public class App extends Application {
         // initialising ui elements
         
         moduleHolder = (VBox) scene.lookup("#moduleHolder");
+        System.out.println(moduleHolder);
+        
+        examHolder = (VBox) scene.lookup("#examHolder");
         System.out.println(moduleHolder);
     }
     
@@ -67,6 +70,12 @@ public class App extends Application {
         });
     }
     
+    static void createExamNameField() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("addExamUI.fxml"));
+        VBox newExam = (VBox) fxmlLoader.load();
+        examHolder.getChildren().add(newExam);
+    }
+    
     static void createModule(String moduleName) throws IOException {
         if (!addingModule) {
             return;
@@ -79,8 +88,19 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("moduleUI.fxml"));
         Button newModule = (Button) fxmlLoader.load();
         ModuleUIController controller = fxmlLoader.getController();
-        controller.instantiateModule(newModule, moduleName);
+        Button newButton = controller.instantiateModule(newModule, moduleName);
         moduleHolder.getChildren().add(newModule);
+        
+        Module module = new Module(newButton.getText());
+        
+        newButton.setOnAction(event -> {
+            loadModulePage(module);
+        });
+    }
+    
+    static void loadModulePage(Module module) {
+        Label moduleNameLabel = (Label) scene.lookup("#moduleName");
+        moduleNameLabel.setText(module.getName());
     }
     
     private static Parent loadFXML(String fxml) throws IOException {

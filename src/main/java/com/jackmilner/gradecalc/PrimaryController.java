@@ -17,4 +17,11 @@ public class PrimaryController {
         App.createModuleNameField();
         
     }
+    
+    @FXML
+    private void addExam() throws IOException {
+        // occurs when #addModule button in the side panel is pressed
+        App.createExamNameField();
+        
+    }
 }

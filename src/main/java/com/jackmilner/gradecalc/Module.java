@@ -8,7 +8,8 @@ public class Module {
     private double targetGPA;
     private ArrayList<Exam> moduleExams;
 
-    public Module() {      
+    public Module(String name) {      
+        this.name = name;
         moduleExams = new ArrayList<Exam>();
     }
     
@@ -75,5 +76,9 @@ public class Module {
         }
         
         return percentageToGPA(totalPercentage);
+    }
+    
+    public String getName() {
+        return this.name;
     }
 }

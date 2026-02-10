@@ -39,10 +39,12 @@
                   <VBox fx:id="examHolder" alignment="TOP_CENTER" spacing="3.0">
                      <padding>
                         <Insets left="10.0" right="10.0" />
-                     </padding>
-                     <children>
-                        <Button alignment="BOTTOM_CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Add Exam +" />
-                     </children></VBox>
+                     </padding></VBox>
+                  <Button fx:id="addExamButton" alignment="BOTTOM_CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addExam" prefHeight="25.0" prefWidth="133.0" text="Add Exam +">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Button>
                   <TextFlow prefHeight="200.0" prefWidth="200.0" />
                </children>
             </VBox>

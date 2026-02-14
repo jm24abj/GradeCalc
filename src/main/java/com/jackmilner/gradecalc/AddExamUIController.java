@@ -75,6 +75,11 @@ public class AddExamUIController implements Initializable {
     
     @FXML
     private void addExam(ActionEvent event) {
+        
+        if (!App.isModuleSelected()) {
+            System.out.println("no module selected");
+            return;
+        }
 
         String name = examName.getText(); // name of new exam
 

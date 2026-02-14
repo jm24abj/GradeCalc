@@ -12,6 +12,8 @@ import javafx.scene.input.KeyCode;
 
 public class App extends Application {
     
+    private static Module selectedModule = null; // current module the user is looking at
+    
     private static Scene scene;
     private static VBox moduleHolder;
     private static VBox examHolder;
@@ -95,12 +97,17 @@ public class App extends Application {
         
         newButton.setOnAction(event -> {
             loadModulePage(module);
+            selectedModule = module;
         });
     }
     
     static void loadModulePage(Module module) {
         Label moduleNameLabel = (Label) scene.lookup("#moduleName");
         moduleNameLabel.setText(module.getName());
+    }
+    
+    static boolean isModuleSelected() {
+        return selectedModule != null;
     }
     
     private static Parent loadFXML(String fxml) throws IOException {

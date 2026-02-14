@@ -11,14 +11,13 @@ import java.io.IOException;
 import javafx.scene.input.KeyCode;
 
 public class App extends Application {
-    
-    private static Module selectedModule = null; // current module the user is looking at
+
+    static Module selectedModule = null; // current module the user is looking at
     
     private static Scene scene;
     private static VBox moduleHolder;
     private static VBox examHolder;
     private static boolean addingModule = false;
-    private static Button[] modules = new Button[30];
     
     @Override
     public void start(Stage stage) throws IOException {
@@ -73,9 +72,17 @@ public class App extends Application {
     }
     
     static void createExamNameField() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("addExamUI.fxml"));
-        VBox newExam = (VBox) fxmlLoader.load();
-        examHolder.getChildren().add(newExam);
+        if (selectedModule != null) {
+            if (selectedModule.getCurrentTotalWeight() < 100) {
+                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("addExamUI.fxml"));
+                VBox newExam = (VBox) fxmlLoader.load();
+                examHolder.getChildren().add(newExam);
+            } else {
+                System.out.println("exam already has total weight");
+            }
+        } else {
+            System.out.println("no module selected");
+        }
     }
     
     static void createModule(String moduleName) throws IOException {

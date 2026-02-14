@@ -46,14 +46,6 @@ public class AddExamUIController implements Initializable {
         return nameLabel;
     }
     
-    private boolean validMarks() {
-        return false;
-    }
-    
-    private boolean validWeight() {
-        return false;
-    }
-    
     private boolean validIntegerField(String fieldText, boolean isRequired) { // used to validate fields so they can be assumed as integers in addExam()
 
         if (fieldText.length() < 1 & isRequired) {
@@ -73,37 +65,33 @@ public class AddExamUIController implements Initializable {
         return true;
     }
     
-    @FXML
-    private void addExam(ActionEvent event) {
+    private Exam createExamObject(String name, String currentMark,String maxMark,String weight) {
+        Exam exam;
         
-        if (!App.isModuleSelected()) {
-            System.out.println("no module selected");
-            return;
-        }
-
-        String name = examName.getText(); // name of new exam
-
-        // fields every new exam contains
-        String currentMark = yourMarkField.getText();
-        String maxMark = maxMarkField.getText();
-        String weight = examWeightingField.getText();
-        
-        boolean nameEntered = name.length() > 0;
-        boolean validFields = validIntegerField(currentMark,false) & validIntegerField(maxMark,true) & validIntegerField(weight,true); 
-        
-        // input validation
-        
-        if (!nameEntered) {
-            System.out.println("name must be entered");
-            return;
+        if (currentMark.length() == 0) {
+            exam = new Exam(name,Integer.parseInt(maxMark),Integer.parseInt(weight));
+        } else {
+            exam = new Exam(name,Integer.parseInt(currentMark),Integer.parseInt(maxMark),Integer.parseInt(weight));
         }
         
-        if (!validFields) {
-            return;
+        if (!exam.validMarks()) {
+            System.out.println("got over 100% in test");
+            return null;
         }
         
-        // if reached then all inputs are valid and ui can be created
+        if (!App.selectedModule.addExam(exam)) {
+            System.out.println("weight isnt right for exam");
+            return null;
+        }
         
+        return exam;
+    }
+    
+    private boolean validExamName(String name) {
+        return name.length() > 0;
+    }
+    
+    private void createExamUI(String name,String weight) {
         examWeightingField.setText(weight + "%"); // adds % sign to make it more clear its percentage weighting
         Label newExam = createExamLabel(name);
 
@@ -112,8 +100,46 @@ public class AddExamUIController implements Initializable {
         examUI.getChildren().remove(addExamButton); 
         examUI.getChildren().remove(examName);
         examUI.getChildren().add(0, newExam);
+    }
+    
+    @FXML
+    private void addExam(ActionEvent event) {
         
+        if (!App.isModuleSelected()) {
+            System.out.println("no module selected");
+            return;
+        }
+
+        // gets the fields every new exam contains
+        String name = examName.getText(); // name of new exam
+        String currentMark = yourMarkField.getText();
+        String maxMark = maxMarkField.getText();
+        String weight = examWeightingField.getText();
         
+        boolean validFields = validIntegerField(currentMark,false) && validIntegerField(maxMark,true) && validIntegerField(weight,true); 
+        
+        // input validation
+        
+        if (!validExamName(name)) {
+            System.out.println("name must be entered");
+            return;
+        }
+        
+        if (!validFields) {
+            return;
+        }
+        
+        Exam exam = createExamObject(name,currentMark,maxMark,weight);
+        
+        if (exam == null) {
+            // issues creating exam obj (invalid weight or getting over 100% in test)
+            return;
+        }
+
+        // if reached then all inputs are valid and ui can be created
+        
+        createExamUI(name,weight);
+  
     }
 
 }

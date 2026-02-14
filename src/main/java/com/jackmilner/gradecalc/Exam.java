@@ -16,8 +16,13 @@ public class Exam {
     
     public Exam(String examName, double maxMark, double examWeight) {
         this.examName = examName;
+        this.yourMark = 0;
         this.examWeight = examWeight/100;
         this.maxMark = maxMark;
+    }
+    
+    public boolean validMarks() {
+        return this.yourMark <= this.maxMark;
     }
     
     public double getExamPercentage() {

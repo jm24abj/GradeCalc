@@ -13,12 +13,15 @@ public class Module {
         moduleExams = new ArrayList<Exam>();
     }
     
-    public void addExam(Exam exam) {
+    public boolean addExam(Exam exam) {
         if (canAddExam(exam.getWeight())){
             moduleExams.add(exam);
         } else {
             System.out.println("cant add");
+            return false;
         }
+        
+        return true;
     }
     
     public void displayExams() {
@@ -34,7 +37,16 @@ public class Module {
             Exam exam = moduleExams.get(i);
             totalPercentage += exam.getWeight();
         } 
-        return (totalPercentage+weight)<= 100; // can only add exam if all exams dont total over 100%
+        return (totalPercentage+weight)<= 100 && weight != 0; // can only add exam if all exams dont total over 100% and exam weight > 0
+    }
+    
+    public double getCurrentTotalWeight() {
+        double totalPercentage = 0;
+        for (int i = 0; i < moduleExams.size(); i++) {
+            Exam exam = moduleExams.get(i);
+            totalPercentage += exam.getWeight();
+        } 
+        return totalPercentage;
     }
     
     public String percentageToGPA(double percentage) {

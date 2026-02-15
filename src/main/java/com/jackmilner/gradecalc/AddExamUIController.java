@@ -35,10 +35,10 @@ public class AddExamUIController implements Initializable {
         // TODO
     }    
     
-    private Label createExamLabel(String nameOfExam) {
+    private Label createExamLabel(String nameOfExam,double fontSize) {
         Label nameLabel = new Label();
         nameLabel.setText(nameOfExam);
-        nameLabel.setFont(new Font("System",18.0));
+        nameLabel.setFont(new Font("System",fontSize));
         nameLabel.setMaxWidth(Double.MAX_VALUE);
         VBox.setMargin(nameLabel, new Insets(0,10,0,10));
         nameLabel.setTextFill(new Color(1.0, 1.0, 1.0, 1.0));
@@ -93,13 +93,15 @@ public class AddExamUIController implements Initializable {
     
     private void createExamUI(String name,String weight) {
         examWeightingField.setText(weight + "%"); // adds % sign to make it more clear its percentage weighting
-        Label newExam = createExamLabel(name);
-
+        Label newExam = createExamLabel(name,18);
+        Label requiredMarksLabel = createExamLabel("Required marks for desired grade : 10/20",14);
+        requiredMarksLabel.setTextAlignment(TextAlignment.CENTER);
         // adding new exam to ui
 
         examUI.getChildren().remove(addExamButton); 
         examUI.getChildren().remove(examName);
         examUI.getChildren().add(0, newExam);
+        examUI.getChildren().add(1, requiredMarksLabel);
     }
     
     @FXML

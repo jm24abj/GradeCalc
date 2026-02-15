@@ -20,6 +20,7 @@ public class Module {
             System.out.println("cant add");
             return false;
         }
+        System.out.println(this.currentModuleGPA());
         
         return true;
     }

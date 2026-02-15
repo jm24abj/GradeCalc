@@ -32,9 +32,9 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="147.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label fx:id="moduleName" alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="17.0" prefWidth="147.0" text="Module Name" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="moduleName" alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="147.0" text="Module Name" textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="24.0" />
                      </font>
                   </Label>
                   <HBox alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" spacing="10.0" VBox.vgrow="NEVER">
@@ -44,7 +44,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="desiredGradeField" promptText="Grade" />
+                        <TextField fx:id="desiredGradeField" promptText="Desired Grade (0-100)" />
                         <Label fx:id="currentGradeLabel" alignment="CENTER" layoutX="85.0" layoutY="10.0" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="17.0" prefWidth="147.0" text="Current Grade: N/A" textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="ALWAYS">
                            <font>
                               <Font size="14.0" />
@@ -55,9 +55,17 @@
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </HBox>
+                  <Label maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="147.0" text="For Unviersity of Hertfordshire students the passing grade is a minimum of 40% with the other degree classifications as follows (2:2 = 50%, 2:1 = 60%). A first class degree is the highest grade and requires an overall score of 70% or above." textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Label>
                   <Label alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="17.0" prefWidth="147.0" text="Exams" textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <VBox fx:id="examHolder" alignment="TOP_CENTER" spacing="3.0">
